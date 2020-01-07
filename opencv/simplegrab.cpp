@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 	VideoCapture cap(0);
 	if(!cap.isOpened())
 	{
-		cerr << "Error: Unable to open the camera" <<endl;
+		cerr << "[ERR] >> UNABLE TO OPEN CAMERA" <<endl;
 		return 0;
 	}
 	
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		cap >> frame;
 		if(frame.empty())
 		{
-			cerr << "Error: Unable to grab from cam" <<endl;
+			cerr << "[ERR] >> UNABLE TO GRAB FROM CAMERA" <<endl;
 			break;
 		}
 	namedWindow("LIVE",2);
@@ -30,8 +30,9 @@ int main(int argc, char **argv)
 	if(key>=0)
 		break;
 	}
-	cout<<"Closing camera"<<endl;
+	cout<<"[INFO] >> RELEASING CAMERA..."<<endl;
 	cap.release();
 	destroyAllWindows();
+	cout<<"[INFO] >> PROGRAM STOPPED"<<endl;
 	return 0;
 }
